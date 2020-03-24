@@ -1,0 +1,124 @@
+" General Utilities {{{
+Plug 'junegunn/vim-plug'
+Plug 'mileszs/ack.vim'
+Plug 'rking/ag.vim'
+Plug 'scrooloose/nerdtree'
+Plug 'jistr/vim-nerdtree-tabs'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-repeat'
+Plug 'morhetz/gruvbox'
+Plug 'myusuf3/numbers.vim'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'fweep/vim-tabber'
+Plug 'Lokaltog/vim-easymotion'
+Plug 'tpope/vim-unimpaired'
+Plug 'sjl/gundo.vim'
+Plug 'vim-scripts/ZoomWin'
+Plug 'bling/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'editorconfig/editorconfig-vim'
+Plug 'bogado/file-line'
+Plug 'jceb/vim-orgmode'
+Plug 'tpope/vim-speeddating'
+Plug 'mxw/vim-jsx'
+Plug 'tpope/vim-abolish'
+Plug 'skywind3000/asyncrun.vim'
+Plug 'tpope/vim-markdown'
+Plug 'aquach/vim-http-client'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+Plug 'junegunn/tmux-complete.vim'
+Plug 'junegunn/indentLine'
+Plug 'enricobacis/paste.vim'
+" }}}
+
+" Programming {{{
+Plug 'sgeb/vim-diff-fold'
+Plug 'mhinz/vim-signify'
+Plug 'scrooloose/syntastic'
+Plug 'tpope/vim-fugitive'
+Plug 'jreybert/vimagit'
+Plug 'mattn/gist-vim'
+Plug 'mattn/webapi-vim'
+Plug 'tpope/vim-commentary'
+Plug 'godlygeek/tabular'
+Plug 'joonty/vdebug'
+Plug 'PeterRincker/vim-argumentative'
+Plug 'tpope/vim-endwise'
+Plug 'aklt/plantuml-syntax'
+Plug 'fatih/vim-nginx'
+Plug 'janko-m/vim-test'
+Plug 'matze/vim-ini-fold'
+Plug 'chaoren/vim-wordmotion'
+
+if executable('ctags')
+  Plug 'majutsushi/tagbar'
+endif
+" }}}
+
+" PHP {{{
+Plug 'tobyS/pdv'
+Plug 'tobyS/vmustache'
+Plug 'SirVer/ultisnips'
+Plug 'alvan/vim-php-manual'
+Plug 'stephpy/vim-php-cs-fixer'
+Plug 'beyondwords/vim-twig'
+Plug 'StanAngeloff/php.vim'
+Plug 'swekaj/php-foldexpr.vim'
+Plug 'phpactor/phpactor', {'for': 'php', 'do': 'composer install'}
+" }}}
+
+" Java {{{
+Plug 'vim-scripts/vim-gradle'
+" }}}
+
+" Python {{{
+Plug 'tmhedberg/SimpylFold'
+Plug 'Konfekt/FastFold'
+Plug 'vim-scripts/indentpython.vim'
+Plug 'nvie/vim-flake8'
+Plug 'davidhalter/jedi-vim'
+Plug 'Glench/Vim-Jinja2-Syntax'
+" }}}
+
+" Javascript {{{
+Plug 'elzr/vim-json'
+Plug 'groenewege/vim-less'
+Plug 'pangloss/vim-javascript'
+Plug 'briancollins/vim-jst'
+Plug 'kchmck/vim-coffee-script'
+Plug 'digitaltoad/vim-jade'
+" }}}
+
+" HTML {{{
+Plug 'alvan/vim-closetag'
+Plug 'hail2u/vim-css3-syntax'
+" }}}
+
+" Ruby {{{
+Plug 'tpope/vim-rails'
+" }}}
+
+" SQL {{{
+Plug 'vim-scripts/Align'
+Plug 'NLKNguyen/pipe-mysql.vim'
+Plug 'NLKNguyen/pipe.vim'
+Plug 'smintz/vim-sqlutil'
+" }}}
+
+" Go {{{
+Plug 'fatih/vim-go'
+" }}}
+
+" Rust {{{
+Plug 'rust-lang/rust.vim'
+" }}}
+
+"" Text editing {{{
+Plug 'freitass/todo.txt-vim'
+Plug 'junegunn/goyo.vim'
+Plug 'junegunn/limelight.vim'
+Plug 'JenniferMack/fountain.vim'
+" }}}
+
+" vim: ft=vim foldlevel=0 foldmethod=marker

@@ -1,0 +1,35 @@
+set nocompatible
+filetype off
+
+" Utility function for bootstrapping {{{
+fun! LoadFiles(files)
+    for file in a:files
+        if filereadable(expand(file))
+            execute "source " . file
+        endif
+    endfor
+endfun
+" }}}
+
+" Bootstrap dotfiles {{{
+    " Setup vim-plugin manager {{{
+    fun! SetupVimPlug()
+        " Define our install dir and add it to our runtime path
+        let plugin_root_dir = expand('$HOME', 1) . '/.vim/plugins'
+        let &rtp .= (empty(&rtp) ? '' : ',') . plugin_root_dir.'/vim-plug'
+
+        call LoadFiles([plugin_root_dir . '/vim-plug/plug.vim'])
+
+        call plug#begin(plugin_root_dir)
+        call LoadFiles(["$HOME/.vim/config/bundles", "$HOME/.vim.bundles.local"])
+        call plug#end()
+    endfun
+
+    call SetupVimPlug()
+    " }}}
+
+    call LoadFiles(["$HOME/.vim/config/functions", "$HOME/.vim/config/mappings", "$HOME/.vim/config/environment", "$HOME/.vim.local"])
+    call InitializeDirectories()
+" }}}
+
+" vim: ft=vim foldlevel=0 foldmethod=marker

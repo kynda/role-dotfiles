@@ -1,0 +1,9 @@
+#!/bin/bash
+
+if [[ $PRIMARY_FG = "white" ]]; then
+    echo "switching to dark color theme";
+    export PRIMARY_FG=black;
+else
+    echo "switching to light color theme";
+    export PRIMARY_FG=white;
+fi

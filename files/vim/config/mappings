@@ -1,0 +1,250 @@
+let mapleader = ' '
+
+cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
+
+" Improved movement {{{
+map <C-J> <C-W>j
+map <C-K> <C-W>k
+map <C-L> <C-W>l
+map <C-H> <C-W>h
+
+" Disable Arrow keys in Escape mode
+map <up> <nop>
+map <down> <nop>
+map <left> <nop>
+map <right> <nop>
+
+" Disable Arrow keys in Insert mode
+imap <up> <nop>
+imap <down> <nop>
+imap <left> <nop>
+imap <right> <nop>
+
+nnoremap j gj
+nnoremap k gk
+
+nnoremap Y y$
+
+nmap <leader>gn :bn<CR>
+nmap <leader>gp :bp<CR>
+nmap <leader>tn :tabnew<CR>
+
+nmap <leader>s :vsp<CR>
+nmap <leader>i :sp<CR>
+
+vnoremap < <gv
+vnoremap > >gv
+
+" }}}
+
+" Misc. {{{
+nmap <leader>no :noh<CR>
+
+nmap zz ZZ
+nmap <leader>ga gg=G
+nmap <leader>db :bp\|bd#<CR>
+nmap <leader>adb :bufdo bdelete<CR>
+command! Bdi :call DeleteInactiveBufs()
+
+nmap <leader>gu :GundoToggle<CR>
+
+cmap w!! w !sudo tee % >/dev/null
+
+map <Leader>= <C-w>=
+
+nnoremap <unique> <leader>r :HTTPClientDoRequest<cr>
+
+nnoremap <silent> <leader>w :wa<CR>
+
+map <F12> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
+\ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
+\ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
+" }}}
+
+" Searching {{{
+nmap <leader>gg :Ggrep<SPACE>
+nmap <leader>ag :Ag<SPACE>
+" }}}
+
+" Fix syntax highlight {{{
+nmap <leader>fs :syn sync fromstart<CR>
+" }}}
+
+" Folding {{{
+nmap <leader>ff :set foldmethod=syntax<CR>
+nmap <leader>fi :set foldmethod=indent<CR>
+nmap <leader>fm :set foldmethod=marker<CR>
+nmap <leader>fd :set foldmethod=diff<CR>
+autocmd FileType php nmap <leader>ff :EnableFastPHPFolds<CR>
+nmap <leader>f0 :set foldlevel=0<CR>
+nmap <leader>f1 :set foldlevel=1<CR>
+nmap <leader>f2 :set foldlevel=2<CR>
+nmap <leader>f3 :set foldlevel=3<CR>
+nmap <leader>f4 :set foldlevel=4<CR>
+nmap <leader>f5 :set foldlevel=5<CR>
+nmap <leader>f6 :set foldlevel=6<CR>
+nmap <leader>f7 :set foldlevel=7<CR>
+nmap <leader>f8 :set foldlevel=8<CR>
+nmap <leader>f9 :set foldlevel=9<CR>
+" }}}
+
+" Test Runner {{{
+augroup vimrc
+    autocmd QuickFixCmdPost * call asyncrun#quickfix_toggle(8, 1)
+augroup END
+let test#strategy = "asyncrun"
+nmap <leader>tc :TestNearest<CR>
+nmap <leader>tf :TestFile<CR>
+nmap <leader>ts :TestSuite<CR>
+nmap <leader>tl :TestLast<CR>
+nmap <leader>tv :TestVisit<CR>
+" }}}
+
+" NERDTree {{{
+map <leader>nt :NERDTreeTabsToggle<CR>
+nmap <leader>nf :NERDTreeFind<CR>
+
+let NERDTreeShowBookmarks=1
+let NERDTreeIgnore=['__pycache__', '\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr', '\.sync']
+let NERDTreeChDirMode=0
+let NERDTreeQuitOnOpen=0
+let NERDTreeMouseMode=2
+let NERDTreeShowHidden=1
+let NERDTreeKeepTreeInNewTab=1
+let NERDTreeNodeDelimiter = "\u00a0"
+let g:nerdtree_tabs_open_on_gui_startup=0
+" }}}
+
+" Tabularize {{{
+nmap <Leader>a& :Tabularize /&<CR>
+vmap <Leader>a& :Tabularize /&<CR>
+nmap <Leader>a= :Tabularize /=<CR>
+vmap <Leader>a= :Tabularize /=<CR>
+nmap <Leader>a> :Tabularize /=><CR>
+vmap <Leader>a> :Tabularize /=><CR>
+nmap <Leader>a: :Tabularize /:<CR>
+vmap <Leader>a: :Tabularize /:<CR>
+nmap <Leader>a:: :Tabularize /:\zs<CR>
+vmap <Leader>a:: :Tabularize /:\zs<CR>
+nmap <Leader>a, :Tabularize /,<CR>
+vmap <Leader>a, :Tabularize /,<CR>
+nmap <Leader>a,, :Tabularize /,\zs<CR>
+vmap <Leader>a,, :Tabularize /,\zs<CR>
+nmap <Leader>a<Bar> :Tabularize /<Bar><CR>
+vmap <Leader>a<Bar> :Tabularize /<Bar><CR>
+vmap <Leader>a<Space> :Tabularize /\S\+;$/l1<CR>
+" }}}
+
+" Multiple cursors {{{
+let g:multi_cursor_exit_from_visual_mode=0
+let g:multi_cursor_exit_from_insert_mode=0
+" }}}
+
+" PHP {{{
+let g:pdv_template_dir = $HOME."/.vim/plugins/pdv/templates_snip"
+autocmd FileType php noremap <leader>pd :call pdv#DocumentWithSnip()<CR>
+autocmd FileType php nmap <leader>pcf :call PhpCsFixerFixFile()<CR>
+autocmd FileType php setlocal omnifunc=phpactor#Complete
+
+" Include use statement
+nmap <Leader>u :call phpactor#UseAdd()<CR>
+
+" Invoke the context menu
+nmap <Leader>mm :call phpactor#ContextMenu()<CR>
+
+" Invoke the navigation menu
+nmap <Leader>nn :call phpactor#Navigate()<CR>
+
+" Goto definition of class or class member under the cursor
+nmap <Leader>o :call phpactor#GotoDefinition()<CR>
+
+" Transform the classes in the current file
+nmap <Leader>ft :call phpactor#Transform()<CR>
+
+" Generate a new class (replacing the current file)
+nmap <Leader>cc :call phpactor#ClassNew()<CR>
+
+" Extract expression (normal mode)
+nmap <silent><Leader>ee :call phpactor#ExtractExpression(v:false)<CR>
+
+" Extract expression from selection
+vmap <silent><Leader>ee :<C-U>call phpactor#ExtractExpression(v:true)<CR>
+
+" Extract method from selection
+vmap <silent><Leader>em :<C-U>call phpactor#ExtractMethod()<CR>
+" }}}
+
+" SQL {{{
+autocmd FileType sql,mysql vmap <leader>fr :SQLUFormatter<CR>
+autocmd FileType sql,mysql nmap <leader>fr :SQLUFormatter<CR>
+" }}}
+
+" JSON {{{
+nmap <leader>fj <Esc>:%!python -m json.tool<CR><Esc>:set filetype=json<CR>
+vmap <leader>fj :'<,'>!python -m json.tool<CR><Esc>:set filetype=json<CR>
+" }}}
+
+" Python {{{
+let g:pymode_lint_checker = "pyflakes"
+let g:pymode_utils_whitespaces = 0
+let g:pymode_options = 0
+" }}}
+
+" FZF {{{
+nmap <C-p> :call SmartFzfSearching()<CR>
+nmap g<C-p> :Files<CR>
+nmap gs<C-p> :GFiles?<CR>
+
+nmap <leader>T :BTags<CR>
+nmap g<leader>T :Tags<CR>
+
+nmap <leader>l :BLines<CR>
+nmap g<leader>l :Lines<CR>
+
+nmap <leader>b :Buffers<CR>
+
+nmap <leader>c :BCommits<CR>
+nmap g<leader>c :Commits<CR>
+" }}}
+
+" Tagbar {{{
+let g:tagbar_autofocus = 1
+let g:tagbar_autoclose = 0
+
+nnoremap <silent> <leader>tt :TagbarToggle<CR>
+" }}}
+
+" Syntastic {{{
+let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [],'passive_filetypes': [] }
+nnoremap <C-w>e :SyntasticCheck<CR> :SyntasticToggleMode<CR>
+" }}}
+
+" Fugitive {{{
+nnoremap <silent> <leader>gs :Gstatus<CR>
+nnoremap <silent> <leader>gd :Gdiff<CR>
+nnoremap <silent> <leader>gc :Gcommit<CR>
+nnoremap <silent> <leader>gb :Gblame<CR>
+nnoremap <silent> <leader>gl :Glog<CR>
+nnoremap <silent> <leader>gw :Gwrite<CR>:GitGutter<CR>
+" }}}
+
+" Golang {{{
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_structs = 1
+
+let g:go_fmt_command = "goimports"
+" }}}
+
+" Pipe integration {{{
+let g:pipe_no_mappings = 1
+nnoremap <leader>pt :PipeToggle<CR>
+nnoremap <leader>pp :Pipe<space>
+nnoremap <leader>pl :PipeLast<CR>
+" }}}
+
+" Macros {{{
+let @d='/^\(<<<<<<<\|=======\|>>>>>>>\)' " Navigating merge conflict
+" }}}
+
+" vim: ft=vim foldlevel=0 foldmethod=marker
