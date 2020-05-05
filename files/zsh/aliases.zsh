@@ -1,4 +1,6 @@
 # Simple aliases
+alias cdd="cd $HOME/Documents"
+alias cdt="cd $HOME/Documents/Todo"
 alias l="ls -lhF"
 alias ll="ls -alhF"
 alias "tree"="tree -C"
@@ -71,3 +73,13 @@ alias "tmux n"="tmux new -s"
 
 # See you space cowboy
 alias exit="$HOME/bin/seeyouspacecowboy.sh; sleep 2; exit"
+
+# Programming
+alias phpx="php \
+        -dxdebug.remote_enable=1 \
+        -dxdebug.remote_autostart=On \
+        -dxdebug.idekey=joe \
+        -dxdebug.remote_port=9000"
+
+# Clear DNS Cache
+alias dns-cache-clear="sudo kill -HUP $(pgrep dnsmasq)"

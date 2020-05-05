@@ -1,84 +1,84 @@
 - name: Dotfiles | install bin
   copy:
     src: ../files/bin/
-    dest: /home/joseph/bin
-    owner: joseph
-    group: joseph
+    dest: "/{{ home }}/{{ user }}/bin"
+    owner: "{{ user }}"
+    group: "{{ user }}"
     force: yes
 
 - name: Dotfiles | install dircolors
   copy:
     src: ../files/dircolors
-    dest: /home/joseph/.dircolors
-    owner: joseph
-    group: joseph
+    dest: "/{{ home }}/{{ user }}/.dircolors"
+    owner: "{{ user }}"
+    group: "{{ user }}"
     force: yes
 
 - name: Dotfiles | install tmux conf
   copy:
     src: ../files/tmux.conf
-    dest: /home/joseph/.tmux.conf
-    owner: joseph
-    group: joseph
+    dest: "/{{ home }}/{{ user }}/.tmux.conf"
+    owner: "{{ user }}"
+    group: "{{ user }}"
     force: yes
 
 - name: Dotfiles | install vimrc
   copy:
     src: ../files/vimrc
-    dest: /home/joseph/.vimrc
-    owner: joseph
-    group: joseph
+    dest: "/{{ home }}/{{ user }}/.vimrc"
+    owner: "{{ user }}"
+    group: "{{ user }}"
     force: yes
 
 - name: Dotfiles | install vim directory
   copy:
     src: ../files/vim/
-    dest: /home/joseph/.vim
-    owner: joseph
-    group: joseph
+    dest: "/{{ home }}/{{ user }}/.vim"
+    owner: "{{ user }}"
+    group: "{{ user }}"
     force: yes
 
 - name: Dotfiles | install neovim config
   copy:
     src: ../files/config/nvim/init.vim
-    dest: /home/joseph/.config/nvim/init.vim
-    owner: joseph
-    group: joseph
+    dest: "/{{ home }}/{{ user }}/.config/nvim/init.vim"
+    owner: "{{ user }}"
+    group: "{{ user }}"
     force: yes
 
 - name: Dotfiles | install vim.local
   copy:
     src: ../files/vim.local
-    dest: /home/joseph/.vim.local
-    owner: joseph
-    group: joseph
+    dest: "/{{ home }}/{{ user }}/.vim.local"
+    owner: "{{ user }}"
+    group: "{{ user }}"
     force: yes
 
 - name: Dotfiles | install vim plugins
   shell: vim -c "PlugInstall" -c "qa"
   become: yes
-  become_user: joseph
+  become_user: "{{ user }}"
 
 - name: Dotfiles | install zshrc
   copy:
     src: ../files/zshrc
-    dest: /home/joseph/.zshrc
-    owner: joseph
-    group: joseph
+    dest: "/{{ home }}/{{ user }}/.zshrc"
+    owner: "{{ user }}"
+    group: "{{ user }}"
     force: yes
 
 - name: Dotfiles | install zsh directory
   copy:
-    src: /home/joseph/Playbook/roles/dotfiles/files/zsh/
-    dest: /home/joseph/.zsh
-    owner: joseph
-    group: joseph
+    src: ../files/zsh/
+    dest: "/{{ home }}/{{ user }}/.zsh"
+    owner: "{{ user }}"
+    group: "{{ user }}"
     force: yes
 
 - name: Dotfiles | install zshrc.local
   copy:
     src: ../files/zshrc.local
-    dest: /home/joseph/.zshrc.local
-    owner: joseph
-    group: joseph
+    dest: "/{{ home }}/{{ user }}/.zshrc.local"
+    owner: "{{ user }}"
+    group: "{{ user }}"
     force: yes
