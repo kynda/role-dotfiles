@@ -1,57 +1,57 @@
 - name: Dotfiles | install bin
   copy:
     src: ../files/bin/
-    dest: "/{{ home }}/{{ user }}/bin"
+    dest: "{{ home }}/bin"
     owner: "{{ user }}"
-    group: "{{ user }}"
+    group: "{{ group }}"
     force: yes
 
 - name: Dotfiles | install dircolors
   copy:
     src: ../files/dircolors
-    dest: "/{{ home }}/{{ user }}/.dircolors"
+    dest: "{{ home }}/.dircolors"
     owner: "{{ user }}"
-    group: "{{ user }}"
+    group: "{{ group }}"
     force: yes
 
 - name: Dotfiles | install tmux conf
   copy:
     src: ../files/tmux.conf
-    dest: "/{{ home }}/{{ user }}/.tmux.conf"
+    dest: "{{ home }}/.tmux.conf"
     owner: "{{ user }}"
-    group: "{{ user }}"
+    group: "{{ group }}"
     force: yes
 
 - name: Dotfiles | install vimrc
   copy:
     src: ../files/vimrc
-    dest: "/{{ home }}/{{ user }}/.vimrc"
+    dest: "{{ home }}/.vimrc"
     owner: "{{ user }}"
-    group: "{{ user }}"
+    group: "{{ group }}"
     force: yes
 
 - name: Dotfiles | install vim directory
   copy:
     src: ../files/vim/
-    dest: "/{{ home }}/{{ user }}/.vim"
+    dest: "{{ home }}/.vim"
     owner: "{{ user }}"
-    group: "{{ user }}"
+    group: "{{ group }}"
     force: yes
 
 - name: Dotfiles | install neovim config
   copy:
     src: ../files/config/nvim/init.vim
-    dest: "/{{ home }}/{{ user }}/.config/nvim/init.vim"
+    dest: "{{ home }}/.config/nvim/init.vim"
     owner: "{{ user }}"
-    group: "{{ user }}"
+    group: "{{ group }}"
     force: yes
 
 - name: Dotfiles | install vim.local
   copy:
     src: ../files/vim.local
-    dest: "/{{ home }}/{{ user }}/.vim.local"
+    dest: "{{ home }}/.vim.local"
     owner: "{{ user }}"
-    group: "{{ user }}"
+    group: "{{ group }}"
     force: yes
 
 - name: Dotfiles | install vim plugins
@@ -62,23 +62,23 @@
 - name: Dotfiles | install zshrc
   copy:
     src: ../files/zshrc
-    dest: "/{{ home }}/{{ user }}/.zshrc"
+    dest: "{{ home }}/.zshrc"
     owner: "{{ user }}"
-    group: "{{ user }}"
+    group: "{{ group }}"
     force: yes
 
 - name: Dotfiles | install zsh directory
   copy:
     src: ../files/zsh/
-    dest: "/{{ home }}/{{ user }}/.zsh"
+    dest: "{{ home }}/.zsh"
     owner: "{{ user }}"
-    group: "{{ user }}"
+    group: "{{ group }}"
     force: yes
 
 - name: Dotfiles | install zshrc.local
   copy:
     src: ../files/zshrc.local
-    dest: "/{{ home }}/{{ user }}/.zshrc.local"
+    dest: "{{ home }}/.zshrc.local"
     owner: "{{ user }}"
-    group: "{{ user }}"
+    group: "{{ group }}"
     force: yes
