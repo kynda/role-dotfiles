@@ -38,6 +38,11 @@
     group: "{{ group }}"
     force: yes
 
+- name: Dotfiles | create neovim config directory
+  file:
+    path: "/{{ home }}/{{ user }}/.config/nvim"
+    state: directory
+
 - name: Dotfiles | install neovim config
   copy:
     src: ../files/config/nvim/init.vim
