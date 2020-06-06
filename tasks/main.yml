@@ -4,6 +4,7 @@
     dest: "{{ home }}/{{ user }}/bin"
     owner: "{{ user }}"
     group: "{{ user }}"
+    mode: preserve
     force: yes
 
 - name: Dotfiles | install dircolors
